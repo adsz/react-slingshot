@@ -8,7 +8,6 @@ jobs:
     steps:
       - checkout
       - run: npm i
-      - run: npm audit fix
       - save_cache:
           paths:
             - "/src/node_modules"
@@ -22,7 +21,6 @@ jobs:
           keys:
             - "npm_packages"
       - run: npm i
-      - run: npm audit fix
       - run: npm run test 
   analyze:
     <<: *defaults
@@ -31,6 +29,7 @@ jobs:
       - restore_cache:
           keys:
             - "npm_packages"
+      - run: npm audit fix      
       - run: npm audit
 
 workflows:
