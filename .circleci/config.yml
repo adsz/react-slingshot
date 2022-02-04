@@ -27,6 +27,6 @@ workflows:
   adam_npm_workflow:
     jobs:
       - build
-      - test
+      - test:
           requires:
             - build
